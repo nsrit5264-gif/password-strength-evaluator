@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength Evaluator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Password Strength Evaluator</h1>
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+                <span class="sun-icon">☀️</span>
+                <span class="moon-icon">🌙</span>
+            </button>
+        </header>
+        
+        <div class="card">
+            <div class="input-group">
+                <div class="password-input-container">
+                    <input 
+                        type="password" 
+                        id="passwordInput" 
+                        class="password-input" 
+                        placeholder="Enter your password" 
+                        aria-label="Password input" 
+                        autocomplete="off"
+                        spellcheck="false"
+                    >
+                    <button type="button" class="toggle-password" id="togglePassword" aria-label="Toggle password visibility">
+                        <svg class="eye-icon" viewBox="0 0 24 24" width="20" height="20">
+                            <path d="M12 5c-7.633 0-9.927 6.617-9.948 6.684L1.946 12l.105.316C2.073 12.383 4.367 19 12 19s9.927-6.617 9.948-6.684l.106-.316-.105-.316C21.927 11.617 19.633 5 12 5zm0 12c-5.351 0-7.424-3.846-7.926-5C4.578 10.842 6.652 7 12 7c5.351 0 7.424 3.846 7.926 5-.504 1.158-2.578 5-7.926 5z"/>
+                            <path d="M12 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-4 2a4 4 0 1 1 8 0 4 4 0 0 1-8 0z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="strength-meter-container">
+                <div class="strength-meter">
+                    <div class="strength-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <div class="strength-info">
+                    <span id="strengthScore">0%</span>
+                    <span id="strengthLabel">Very Weak</span>
+                </div>
+            </div>
+
+            <div id="suggestionsContainer" class="suggestions-container" hidden>
+                <h3>Suggested Stronger Passwords:</h3>
+                <ul id="suggestionsList" class="suggestions-list"></ul>
+            </div>
+
+            <div class="requirements">
+                <h3>Password Requirements:</h3>
+                <ul class="requirements-list">
+                    <li data-requirement="length">
+                        <svg class="requirement-icon" viewBox="0 0 24 24" width="16" height="16">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                        </svg>
+                        At least 8 characters
+                    </li>
+                    <li data-requirement="uppercase">
+                        <svg class="requirement-icon" viewBox="0 0 24 24" width="16" height="16">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                        </svg>
+                        At least 1 uppercase letter
+                    </li>
+                    <li data-requirement="lowercase">
+                        <svg class="requirement-icon" viewBox="0 0 24 24" width="16" height="16">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                        </svg>
+                        At least 1 lowercase letter
+                    </li>
+                    <li data-requirement="number">
+                        <svg class="requirement-icon" viewBox="0 0 24 24" width="16" height="16">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                        </svg>
+                        At least 1 number
+                    </li>
+                    <li data-requirement="special">
+                        <svg class="requirement-icon" viewBox="0 0 24 24" width="16" height="16">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                        </svg>
+                        At least 1 special character
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="tips">
+            <h3>Tips for a strong password:</h3>
+            <ul>
+                <li>Use a mix of letters, numbers, and symbols</li>
+                <li>Avoid common words and personal information</li>
+                <li>Consider using a passphrase instead of a password</li>
+                <li>Use a unique password for each account</li>
+            </ul>
+        </div>
+
+        <footer>
+            <p class="disclaimer">
+                Note: This tool runs entirely in your browser. Your password is never sent over the internet.
+            </p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
